@@ -6,11 +6,11 @@ import { Feather } from '@expo/vector-icons';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import CloudTabScreen from '../screens/CloudScreen';
+import GamesTabScreen from '../screens/GamesScreen';
 import MessagesTabScreen from '../screens/MessagesScreen';
 import PeopleTabScreen from '../screens/PeopleScreen';
 import SettingsTabScreen from '../screens/SettingsScreen';
-import { BottomTabParamList, CloudTabParamList, MessagesTabParamList, PeopleTabParamList, SettingsTabParamList } from '../types';
+import { BottomTabParamList, GamesTabParamList, MessagesTabParamList, PeopleTabParamList, SettingsTabParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -19,64 +19,68 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Cloud"
+      initialRouteName="Games"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="Cloud"
-        component={CloudTabNavigator}
+        name="Games"
+        component={GamesTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Feather name="cloud-snow" size={24} color="black" />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="crosshair" color={color} />,
         }}
       />
-      
       <BottomTab.Screen
         name="Messages"
         component={MessagesTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Feather name="message-circle" size={24} color="black" />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="message-circle" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="People"
         component={PeopleTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="md-people" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="users" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="Settings"
         component={SettingsTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-settings" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="tool" color={color} />,
         }}
       />
     </BottomTab.Navigator>
   );
 }
 
+
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
 function TabBarIcon(props: { name: string; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+  return <Feather size={30} style={{ marginBottom: -3 }} {...props} />;
 }
+
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const CloudTabStack = createStackNavigator<CloudTabParamList>();
+const GamesTabStack = createStackNavigator<GamesTabParamList>();
 
-function CloudTabNavigator() {
+
+function GamesTabNavigator() {
   return (
-    <CloudTabStack.Navigator>
-      <CloudTabStack.Screen
-        name="CloudTabScreen"
-        component={CloudTabScreen}
-        options={{ headerTitle: 'Messages' }}
+    <GamesTabStack.Navigator>
+      <GamesTabStack.Screen
+        name="GamesTabScreen"
+        component={GamesTabScreen}
+        options={{ headerTitle: 'Games' }}
       />
-    </CloudTabStack.Navigator>
+    </GamesTabStack.Navigator>
   );
 }
 
+
 const MessagesTabStack = createStackNavigator<MessagesTabParamList>();
+
 
 function MessagesTabNavigator() {
   return (
@@ -84,11 +88,12 @@ function MessagesTabNavigator() {
       <MessagesTabStack.Screen
         name="MessagesTabScreen"
         component={MessagesTabScreen}
-        options={{ headerTitle: 'Friends' }}
+        options={{ headerTitle: 'Messages' }}
       />
     </MessagesTabStack.Navigator>
   );
 }
+
 
 const PeopleTabStack = createStackNavigator<PeopleTabParamList>();
 
@@ -98,7 +103,7 @@ function PeopleTabNavigator() {
       <PeopleTabStack.Screen
         name="PeopleTabScreen"
         component={PeopleTabScreen}
-        options={{ headerTitle: 'Settings' }}
+        options={{ headerTitle: 'People' }}
       />
     </PeopleTabStack.Navigator>
   );

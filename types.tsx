@@ -4,15 +4,15 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  Cloud: undefined;
+  Games: undefined;
   Messages: undefined;
   People: undefined;
   Settings: undefined;
   
 };
 
-export type CloudTabParamList = {
-  CloudTabScreen: undefined;
+export type GamesTabParamList = {
+  GamesTabScreen: undefined;
 };
 
 export type MessagesTabParamList = {
