@@ -29,20 +29,6 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Messages"
-        component={MessagesTabNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="message-circle" color={color} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="People"
-        component={PeopleTabNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="users" color={color} />,
-        }}
-      />
-      <BottomTab.Screen
         name="Settings"
         component={SettingsTabNavigator}
         options={{
@@ -122,3 +108,22 @@ function SettingsTabNavigator() {
     </SettingsTabStack.Navigator>
   );
 }
+
+
+/*
+<BottomTab.Screen
+        name="Messages"
+        component={MessagesTabNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="message-circle" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="People"
+        component={PeopleTabNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="users" color={color} />,
+        }}
+      />
+
+*/
